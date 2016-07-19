@@ -113,3 +113,36 @@ body {
  .chat_op{
     padding :0px;
  }
+
+ /*
+  * animation
+  */
+
+ .sample-show-hide {
+   padding: 10px;
+   border: 1px solid black;
+   background: white;
+ }
+
+ .sample-show-hide {
+   transition: all linear 0.5s;
+ }
+
+ .sample-show-hide.ng-hide {
+   opacity: 0;
+ }
+
+ .css-class-add, .css-class-remove {
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.css-class,
+.css-class-add.css-class-add-active {
+  color: red;
+  font-size:3em;
+}
+
+.css-class-remove.css-class-remove-active {
+  font-size:1.0em;
+  color: black;
+}

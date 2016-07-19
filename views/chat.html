@@ -1,14 +1,17 @@
-<div class='chat'>
+<div class='chat' ng-controller='appCtl'>
   <div class="chat_mid">
-
+    <ul>
+      <li ng-repeat='log in chat_logs'>
+        {{log.message}}
+    </ul>
   </div>
 
   <div class="chat_bot">
       <div class='col-md-11 chat_op'>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" ng-model="msg">
       </div>
       <div class='col-md-1 chat_op'>
-        <button type="button" class="btn btn-primary center-block">채팅 보내기</button>
+        <button type="button" class="btn btn-primary center-block" ng-click='insertmsg()'>채팅 보내기</button>
       </div>
   </div>
 </div>

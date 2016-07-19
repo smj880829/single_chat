@@ -14,4 +14,12 @@ router.get('/chat', function(req, res, next) {
   res.render('chat');
 });
 
+router.get('/ani', function(req, res, next) {
+  res.render('ani');
+});
+
+router.get('/error', function(req, res, next) {
+  res.render('error');
+});
+
 module.exports = router;
