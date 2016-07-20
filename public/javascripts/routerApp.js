@@ -14,17 +14,6 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
     $scope.chat_logs = [];
 
 
-    $scope.insertmsg = function(){
-       var query = {'message' : $scope.msg};
-        $http.post('/mc/insert_chatlog',{'query' : query})
-        .success(function(res){
-
-        })
-        .error(function(){
-          $window.alert("err");
-        })
-      }
-
       $scope.find_chatlog = function(){
           $http.post('/mc/find_chatlog')
           .success(function(res){
@@ -34,5 +23,19 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
             $window.alert("err");
           })
         }
+
+        $scope.find_chatlog();
+
+        $scope.insertmsg = function(){
+           var query = {'message' : $scope.msg};
+            $http.post('/mc/insert_chatlog',{'query' : query})
+            .success(function(res){
+              $scope.msg ="";
+              $scope.find_chatlog();
+            })
+            .error(function(){
+              $window.alert("err");
+            })
+          }
   }]
 );

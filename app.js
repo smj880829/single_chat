@@ -4,13 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var http = require('http');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var mc = require('./routes/mongoConnector');
+var scio = require('./routes/socketio');
 
 var app = express();
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // view engine setup
 app.engine('html', require('ejs').renderFile);
@@ -28,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/mc', mc);
+app.use('/socket.io',scio);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,8 +65,23 @@ app.use(function(err, req, res, next) {
   });
 });
 
+http.listen(80);
+
+/*
+app.listen(80,function(){
+  console.log('server running...');
+});
 http.createServer(app).listen(80, function(){
     console.log('server running...');
+});
+*/
+
+
+
+
+io.on('connection', function (socket) {
+    console.log('socket connect');
+  socket.emit('wow', { hello: 'world' });  //socket.emit('messages', 'Hello from server');
 });
 
 
