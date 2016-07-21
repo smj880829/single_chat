@@ -14,7 +14,7 @@ var scio = require('./routes/socketio');
 var app = express();
 
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var mysocket = require('./mysocketio')(http);
 
 // view engine setup
 app.engine('html', require('ejs').renderFile);
@@ -78,11 +78,6 @@ http.createServer(app).listen(80, function(){
 
 
 
-
-io.on('connection', function (socket) {
-    console.log('socket connect');
-  socket.emit('wow', { hello: 'world' });  //socket.emit('messages', 'Hello from server');
-});
 
 
 module.exports = app;

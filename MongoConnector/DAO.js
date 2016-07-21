@@ -1,5 +1,6 @@
 var mongo = require('mongodb').MongoClient
 var db_Config = require('./Conf')
+var soc =  require('../mysocketio')
 
 function find(filter,callback){
   mongo.connect(db_Config.url,function(err,db){
@@ -29,7 +30,8 @@ function insert(query,callback){
     var parrots = db.collection(db_Config.col)
     parrots.insert(query,function(err) {
       if (err) throw err
-      db.close()})
+      db.close()
+    })
 })
 }
 

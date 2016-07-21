@@ -88,9 +88,9 @@ body {
  * chat
  */
 .chat{
-   width : auto;
-   position:relative;
-   height: 600px;
+   width : 80%;
+   position:fixed;
+   height: 100%;
 }
 
  .chat_top{

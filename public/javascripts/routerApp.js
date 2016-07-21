@@ -10,7 +10,7 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
     .otherwise({redirectTo: '/'});
 //otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.
   })
-  .controller('appCtl',['$scope', '$window','$http', function($scope, $window,$http) {
+  .controller('appCtl',['$scope', '$window','$http','socket','$log',  function($scope, $window,$http,socket,$log) {
     $scope.chat_logs = [];
 
 
@@ -37,5 +37,58 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
               $window.alert("err");
             })
           }
+
+          $scope.insertmsg_angular = function(){
+            var query = {'message' : $scope.msg};
+              socket.emit('insert_chatlog', query);
+              $scope.msg ="";
+
+              socket.emit('find_chatlog');
+            }
+
+          socket.on('replace_chatlog', function (data) {
+            socket.emit('find_chatlog');
+          });
+
+          socket.on('chat_logs', function (data) {
+            $scope.chat_logs = data;
+          });
+
   }]
-);
+)
+.factory('socket', function ($rootScope) {
+  var socket = io.connect('http://localhost');
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      })
+    }
+  };
+})
+  .directive('myEnter', function () {
+      return function (scope, element, attrs) {
+          element.bind("keydown", function (event) {
+              if(event.which === 13) {
+                  scope.$apply(function (){
+                      scope.$eval(attrs.myEnter);
+                  });
+
+                  event.preventDefault();
+              }
+          });
+      };
+  });

@@ -12,7 +12,8 @@ router.post('/insert_chatlog', function(req, res, next) {
     var getquery = req.param('query')
     getquery.insert_time = new Date()
     db.insert(getquery,function(re){
-      res.send(re );}
+      res.send(re );
+    }
     )}
     res.send("insert query!");
 });
@@ -22,8 +23,5 @@ router.post('/find_chatlog', function(req, res, next) {
     res.send(re );
   })
 });
-
-
-
 
 module.exports = router;
