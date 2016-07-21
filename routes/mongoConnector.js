@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../Mongoconnector/DAO')
+var db = require('../MongoConnector/DAO')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
