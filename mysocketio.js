@@ -3,7 +3,7 @@ var db = require('./Mongoconnector/DAO')
 
 
 module.exports = function(options) {
-  io.attach(options);
+  io.attach(options,{origins:'ec2-54-249-39-95.ap-northeast-1.compute.amazonaws.com:* http://ec2-54-249-39-95.ap-northeast-1.compute.amazonaws.com:*'});
 };
 
 io.on('connection', function (socket) {

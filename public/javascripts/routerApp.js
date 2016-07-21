@@ -57,7 +57,7 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
   }]
 )
 .factory('socket', function ($rootScope) {
-  var socket = io.connect('http://localhost');
+  var socket = io.connect('http://ec2-54-249-39-95.ap-northeast-1.compute.amazonaws.com');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
