@@ -46,6 +46,11 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
               socket.emit('find_chatlog');
             }
 
+            $scope.chat_log_sort = function(data){
+
+              }
+
+
           socket.on('replace_chatlog', function (data) {
             socket.emit('find_chatlog');
           });
@@ -91,4 +96,9 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
               }
           });
       };
-  });
+  })
+  .filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});

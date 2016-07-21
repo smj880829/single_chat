@@ -19,7 +19,7 @@ router.post('/insert_chatlog', function(req, res, next) {
 });
 
 router.post('/find_chatlog', function(req, res, next) {
-  db.find_sort_limit({},{'insert_time':-1},10,function(re){
+  db.find_sort_limit({},{'insert_time':-1},38,function(re){
     res.send(re );
   })
 });

@@ -4,6 +4,7 @@ var conf = require('./MongoConnector/Conf')
 
 module.exports = function(options) {
   io.attach(options,{origins:conf.ip +':* http://' + conf.ip +':*'});
+  //io.attach(options);
 };
 
 io.on('connection', function (socket) {
@@ -20,14 +21,13 @@ io.on('connection', function (socket) {
 
     })
     //socket.broadcast.emit('replace_chatlog');
-
-    db.find_sort_limit({},{'insert_time':-1},10,function(re){
+    db.find_sort_limit({},{'insert_time':-1},38,function(re){
       socket.broadcast.emit('chat_logs', re);
     })
   })
 
   socket.on('find_chatlog', function(data){
-    db.find_sort_limit({},{'insert_time':-1},10,function(re){
+    db.find_sort_limit({},{'insert_time':-1},38,function(re){
       socket.emit('chat_logs', re);
     })
   })
