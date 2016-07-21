@@ -46,11 +46,6 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
               socket.emit('find_chatlog');
             }
 
-            $scope.chat_log_sort = function(data){
-
-              }
-
-
           socket.on('replace_chatlog', function (data) {
             socket.emit('find_chatlog');
           });
@@ -62,7 +57,7 @@ angular.module('myApp', ['ngRoute','ngAnimate'])
   }]
 )
 .factory('socket', function ($rootScope) {
-  var socket = io.connect('http://ec2-54-249-39-95.ap-northeast-1.compute.amazonaws.com');
+  var socket = io.connect('http://localhost');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
