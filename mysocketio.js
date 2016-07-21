@@ -1,9 +1,9 @@
 var io =  require('socket.io')();
 var db = require('./MongoConnector/DAO')
-
+var conf = require('./MongoConnector/Conf')
 
 module.exports = function(options) {
-  io.attach(options,{origins:'ec2-54-249-39-95.ap-northeast-1.compute.amazonaws.com:* http://ec2-54-249-39-95.ap-northeast-1.compute.amazonaws.com:*'});
+  io.attach(options,{origins:conf.ip +':* http://' + conf.ip +':*'});
 };
 
 io.on('connection', function (socket) {
