@@ -1,16 +1,36 @@
-<div ng-init="checked=true">
-  <label>
-    <input type="checkbox" ng-model="checked" style="float:left; margin-right:10px;"> Is Visible...
-  </label>
-  <div class="check-element sample-show-hide" ng-show="checked" style="clear:both;">
-    Visible...
+<div ng-controller='aniCtl'>
+  <div ng-init="checked=true" >
+    <label>
+      <input type="checkbox" ng-model="checked" style="float:left; margin-right:10px;"> Is Visible...
+    </label>
+    <div class="check-element sample-show-hide" ng-show="checked" style="clear:both;">
+      Visible...
+    </div>
   </div>
-</div>
 
-<br>
-<p>
-  <input type="button" value="set" ng-click="myCssVar='css-class'">
-  <input type="button" value="clear" ng-click="myCssVar=''">
   <br>
-  <span ng-class="myCssVar">CSS-Animated Text</span>
-</p>
+  <p>
+    <input type="button" value="set" ng-click="myCssVar='css-class'">
+    <input type="button" value="clear" ng-click="myCssVar=''">
+    <br>
+    <span ng-class="myCssVar">CSS-Animated Text</span>
+  </p>
+
+
+
+  <div class="well" style="margin-top: 30px; width: 200px; overflow: hidden;">
+      <form class="form-search">
+          <div class="input-append">
+            <input type="text" ng-model="search" class="search-query" style="width: 80px">
+            <button ng-click=addelement(search) class="btn">Search</button>
+          </div>
+          <ul class="nav nav-pills nav-stacked">
+            <li ng-animate="'animate'" ng-repeat="name in names | filter:search">
+              <a href="#"> {{name}} </a>
+            </li>
+        </ul>
+      </form>
+    </div>
+
+
+</div>
