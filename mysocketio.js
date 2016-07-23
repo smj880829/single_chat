@@ -18,12 +18,8 @@ io.on('connection', function (socket) {
   socket.on('insert_chatlog', function(data){
     data.insert_time = new Date()
     db.insert(data,function(re){
-
     })
-    //socket.broadcast.emit('replace_chatlog');
-    db.find_sort_limit({},{'insert_time':-1},10,function(re){
-      socket.broadcast.emit('chat_logs', re);
-    })
+    socket.broadcast.emit('add_chatlog', data);
   })
 
   socket.on('find_chatlog', function(data){

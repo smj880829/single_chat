@@ -13,6 +13,8 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
   app.controller('appCtl',['$scope', '$window','$http','socket','$log',  function($scope, $window,$http,socket,$log) {
     $scope.chat_logs = [];
 
+    socket.emit('find_chatlog');
+
       $scope.find_chatlog = function(){
           $http.post('/mc/find_chatlog')
           .success(function(res){
@@ -22,8 +24,6 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
             $window.alert("err");
           })
         }
-
-        $scope.find_chatlog();
 
         $scope.insertmsg = function(){
            var query = {'message' : $scope.msg};
@@ -40,10 +40,13 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
           $scope.insertmsg_angular = function(){
             var query = {'message' : $scope.msg};
               socket.emit('insert_chatlog', query);
+              $scope.chat_logs.push = $scope.msg;
               $scope.msg ="";
-
-              socket.emit('find_chatlog');
             }
+
+          socket.on('add_chatlog', function (data) {
+            $scope.chat_logs.push = data.message;
+          });
 
           socket.on('replace_chatlog', function (data) {
             socket.emit('find_chatlog');
@@ -65,7 +68,7 @@ app.controller('aniCtl', function($scope) {
 
 
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect('http://ec2-54-199-179-250.ap-northeast-1.compute.amazonaws.com');
+  var socket = io.connect('http://localhost');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
