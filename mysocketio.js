@@ -15,11 +15,19 @@ io.on('connection', function (socket) {
     console.log('user disconnected');
   });
 
+  socket.on('event', function(data){
+    console.log(data);
+  });
+
   socket.on('insert_chatlog', function(data){
     data.insert_time = new Date()
     db.insert(data,function(re){
+
     })
-    socket.broadcast.emit('add_chatlog', data);
+    //socket.broadcast.emit('replace_chatlog');
+    db.find_sort_limit({},{'insert_time':-1},10,function(re){
+      socket.broadcast.emit('chat_logs', re);
+    })
   })
 
   socket.on('find_chatlog', function(data){
