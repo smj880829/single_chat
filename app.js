@@ -66,7 +66,6 @@ app.use(function(err, req, res, next) {
 });
 
 http.listen(80);
-http.listen(443);
 
 /*
 app.listen(80,function(){
