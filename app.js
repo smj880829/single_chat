@@ -73,7 +73,8 @@ const options = {
   cert: fs.readFileSync('./cert.pem')
 };
 
-var mysocket = require('./mysocketio')(https);
+//var mysocket = require('./mysocketio')(https);
+var io =  require('socket.io')(https);
 
 https.createServer(options, (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -86,6 +87,14 @@ https.createServer(options, (req, res) => {
 		return;
 	}
 }).listen(8080);
+
+io.on('connection', function (socket) {
+    console.log('socket connect');
+
+    io.on('wow', function (socket) {
+        console.log('wow2');
+    })
+})
 
 /*
 app.listen(80,function(){

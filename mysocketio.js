@@ -3,7 +3,7 @@ var db = require('./MongoConnector/DAO')
 var conf = require('./MongoConnector/Conf')
 
 module.exports = function(options) {
-  io.attach(options,{origins:conf.ip +':* https://' + conf.ip +':*'});
+  io.attach(options,{origins:conf.ip +':* http://' + conf.ip +':*'});
   //io.attach(options);
 };
 
