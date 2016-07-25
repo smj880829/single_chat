@@ -4,8 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var https = require('https');
-var fs = require('fs');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -15,7 +14,7 @@ var scio = require('./routes/socketio');
 var app = express();
 
 var http = require('http').Server(app);
-
+var mysocket = require('./mysocketio')(http);
 
 // view engine setup
 app.engine('html', require('ejs').renderFile);
@@ -67,34 +66,6 @@ app.use(function(err, req, res, next) {
 });
 
 http.listen(80);
-
-const options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
-};
-
-//var mysocket = require('./mysocketio')(https);
-var io =  require('socket.io')(https);
-
-https.createServer(options, (req, res) => {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Access-Control-Request-Method', '*');
-	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-	res.setHeader('Access-Control-Allow-Headers', '*');
-	if ( req.method === 'OPTIONS' ) {
-		res.writeHead(200);
-		res.end();
-		return;
-	}
-}).listen(8080);
-
-io.on('connection', function (socket) {
-    console.log('socket connect');
-
-    io.on('wow', function (socket) {
-        console.log('wow2');
-    })
-})
 
 /*
 app.listen(80,function(){
