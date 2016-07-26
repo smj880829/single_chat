@@ -13,44 +13,21 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
   app.controller('appCtl',['$scope', '$window','$http','socket','$log',  function($scope, $window,$http,socket,$log) {
     $scope.chat_logs = [];
 
-    socket.emit('find_chatlog');
+    socket.emit('init_chat_log');
 
-      $scope.find_chatlog = function(){
-          $http.post('/mc/find_chatlog')
-          .success(function(res){
-            $scope.chat_logs = res;
-          })
-          .error(function(){
-            $window.alert("err");
-          })
-        }
+    $scope.insertmsg_angular = function(){
+      socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
+      $scope.logs.push({"message": $scope.message})
+        $scope.msg ="";
+      }
 
-        $scope.insertmsg = function(){
-           var query = {'message' : $scope.msg};
-            $http.post('/mc/insert_chatlog',{'query' : query})
-            .success(function(res){
-              $scope.msg ="";
-              $scope.find_chatlog();
-            })
-            .error(function(){
-              $window.alert("err");
-            })
-          }
-
-          $scope.insertmsg_angular = function(){
-            var query = {'message' : $scope.msg};
-              socket.emit('insert_chatlog', query);
-              $scope.msg ="";
-
-              socket.emit('find_chatlog');
-            }
-
-          socket.on('replace_chatlog', function (data) {
-            socket.emit('find_chatlog');
+          socket.on('new_chat_log', function (data) {
+            $scope.logs.push({"message": $scope.message})
           });
 
           socket.on('chat_logs', function (data) {
             $scope.chat_logs = data;
+            $scope.chat_logs.reverse();
           });
 
   }]
@@ -100,8 +77,3 @@ app.factory('socket', function ($rootScope) {
           });
       };
   })
-  app.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});

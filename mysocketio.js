@@ -29,9 +29,9 @@ io.on('connection', function (socket) {
 
     })
     //socket.broadcast.emit('replace_chatlog');
-    db.find_sort_limit({},{'insert_time':-1},10,function(re){
-      socket.broadcast.emit('chat_logs', re);
-    })
+
+    socket.broadcast.emit('new_chat_log', data);
+
   })
 
   socket.on('init_chat_log', function(data){
