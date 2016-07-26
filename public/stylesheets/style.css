@@ -189,3 +189,39 @@ body {
     top: -50px;
     height: 0px;
 }
+
+
+.ani-repeat.ng-enter {
+  -webkit-animation: 1s opacity-bright-animation;
+  animation: 1s opacity-bright-animation;
+}
+
+.ani-repeat.ng-leave {
+  -webkit-animation: 1s  opacity-dim-animation;
+  animation: 1s  opacity-dim-animation;
+}
+
+.ani-repeat.ng-move {
+  -webkit-animation: 1s opacity-bright-animation;
+  animation: 1s opacity-bright-animation;
+}
+
+@keyframes opacity-bright-animation {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@-webkit-keyframes opacity-bright-animation {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@keyframes opacity-dim-animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-webkit-keyframes opacity-dim-animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}

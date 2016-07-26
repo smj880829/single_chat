@@ -30,6 +30,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
 
       socket.on('new_chat_log', function (data) {
         $scope.chat_logs.push({"message": data.message})
+        $scope.gotoBottom();
       });
 
       socket.on('chat_logs', function (data) {
