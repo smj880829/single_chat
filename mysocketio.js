@@ -34,6 +34,12 @@ io.on('connection', function (socket) {
     })
   })
 
+  socket.on('init_chat_log', function(data){
+    db.find_sort_limit({},{'insert_time':-1},10,function(re){
+      socket.emit('chat_logs', re);
+    })
+  });
+
   socket.on('find_chatlog', function(data){
     db.find_sort_limit({},{'insert_time':-1},10,function(re){
       socket.emit('chat_logs', re);
