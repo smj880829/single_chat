@@ -29,10 +29,11 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
       }
 
       socket.on('new_chat_log', function (data) {
-        if(data[i].user == 'client')
-          data[i].ali = 'right'
+        if(data.user == 'client')
+          data.ali = 'right'
         else
-          data[i].ali = 'left'
+          data.ali = 'left'
+          
         $scope.chat_logs.push(data)
         $scope.gotoBottom();
       });
