@@ -18,7 +18,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
     $scope.insertmsg_angular = function(){
       socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
       $scope.chat_logs.push({"message": $scope.message})
-        $scope.msg ="";
+        $scope.message ="";
       }
 
       socket.on('new_chat_log', function (data) {
