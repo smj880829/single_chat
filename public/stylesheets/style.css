@@ -116,7 +116,8 @@ body {
     padding :0px;
  }
 
- .log_element {
+ .log {
+   display: inline-block;
    margin: 5px;
    padding: 10px;
    border: 1px solid black;
