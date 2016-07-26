@@ -10,7 +10,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
     .otherwise({redirectTo: '/'});
 //otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.
   })
-  app.controller('appCtl',['$scope', '$window','$http','socket','$log','$location',  function($scope, $window,$http,socket,$log,$location) {
+  app.controller('appCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location',  function($scope,$anchorScroll, $window,$http,socket,$log,$location) {
     $scope.chat_logs = [];
 
     socket.emit('init_chat_log');
