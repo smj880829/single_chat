@@ -192,8 +192,8 @@ body {
 
 
 .ani-repeat.ng-enter {
-  -webkit-animation: 1s opacity-bright-animation;
-  animation: 1s opacity-bright-animation;
+  -webkit-animation: 1s opacity-insert-animation;
+  animation: 1s opacity-insert-animation;
 }
 
 .ani-repeat.ng-leave {
@@ -224,4 +224,14 @@ body {
 @-webkit-keyframes opacity-dim-animation {
   from { opacity:1; }
   to { opacity:0; }
+}
+
+@keyframes opacity-insert-animation {
+  from { transform: scale(1.2,1.2); }
+  to { transform: scale(1,1); }
+}
+
+@-webkit-keyframes opacity-insert-animation {
+  from { transform: scale(1.2,1.2); }
+  to { transform: scale(1,1); }
 }

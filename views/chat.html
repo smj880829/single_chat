@@ -1,7 +1,7 @@
 <div class='chat' ng-controller='appCtl'>
   <div class="chat_mid">
-    <div class="ani-repeat" ng-repeat='log in chat_logs'>
-      <div class="check-element sample-show-hide"  style="clear:both;">
+    <div class="ani-repeat" ng-repeat='log in chat_logs' align='[[log.ali]]'>
+      <div class="log"  >
         {{log.message}}
       </div>
     </div>
