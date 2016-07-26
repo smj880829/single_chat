@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngAnimate'])
+var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
  app.config(function ($routeProvider) {
 //Module의 config API를 사용하면 서비스 제공자provider에 접근할 수 있다. 여기선 $route 서비스 제공자를 인자로 받아온다.
   $routeProvider
@@ -33,7 +33,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
           data.ali = 'right'
         else
           data.ali = 'left'
-          
+
         $scope.chat_logs.push(data)
         $scope.gotoBottom();
       });
