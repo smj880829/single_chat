@@ -22,7 +22,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
       }
 
       socket.on('new_chat_log', function (data) {
-        $scope.logs.push({"message": data.message})
+        $scope.chat_logs.push({"message": data.message})
       });
 
       socket.on('chat_logs', function (data) {
