@@ -1,9 +1,12 @@
 <div class='chat' ng-controller='appCtl'>
   <div class="chat_mid">
-    <ul class="log">
-      <li ng-repeat='log in chat_logs '>
+    <div ng-repeat='log in chat_logs'>
+      <div class="log_element" >
         {{log.message}}
-    </ul>
+      </div>
+    </div>
+    <div id="chat_bottom">
+    </div>
   </div>
 
   <div class="chat_bot">

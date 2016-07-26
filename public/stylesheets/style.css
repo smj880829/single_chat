@@ -93,16 +93,17 @@ body {
    height: 100%;
 }
 
- .log{
-   position:relative;
-   bottom: 0px;
- }
 
  .chat_mid{
    height : 80%;
    bottom: 100px;
    border : solid 1px #ccc;
    border-radius: 10px;
+   overflow: auto;
+ }
+
+ #chat_bottom {
+    bottom: 0px;
  }
 
  .chat_bot{
@@ -115,14 +116,25 @@ body {
     padding :0px;
  }
 
+ .log_element {
+   margin: 5px;
+   padding: 10px;
+   border: 1px solid black;
+   background: white;
+   border-radius: 10px;
+ }
+
+
  /*
   * animation
   */
 
  .sample-show-hide {
+   margin: 5px;
    padding: 10px;
    border: 1px solid black;
    background: white;
+   border-radius: 10px;
  }
 
  .sample-show-hide {
@@ -151,7 +163,7 @@ body {
 }
 
  /*   */
- 
+
 .animate-enter,
 .animate-leave
 {
