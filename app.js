@@ -67,6 +67,15 @@ app.use(function(err, req, res, next) {
 
 http.listen(80);
 
+const options = {
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+};
+
+var https = require('https').Server(options,app);
+var httpsmysocket = require('./mysocketio')(https);
+https.listen(443)
+
 /*
 app.listen(80,function(){
   console.log('server running...');

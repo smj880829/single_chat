@@ -15,6 +15,10 @@ io.on('connection', function (socket) {
     console.log('user disconnected');
   });
 
+  io.on('wow', function (socket) {
+      socket.emit("wow",{"msg":"123"})
+  })
+
   socket.on('event', function(data){
     console.log(data);
   });
