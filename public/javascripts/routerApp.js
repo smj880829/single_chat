@@ -15,10 +15,17 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
 
     socket.emit('init_chat_log');
 
+
+      $scope.gotoBottom = function() {
+        $location.hash('chat_bottom');
+        $anchorScroll();
+      }
+
     $scope.insertmsg_angular = function(){
-      socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
-      $scope.chat_logs.push({"message": $scope.message})
+        socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
+        $scope.chat_logs.push({"message": $scope.message})
         $scope.message ="";
+        $scope.gotoBottom();
       }
 
       socket.on('new_chat_log', function (data) {
