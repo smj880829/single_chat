@@ -23,19 +23,31 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
 
     $scope.insertmsg_angular = function(){
         socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
-        $scope.chat_logs.push({"message": $scope.message})
+        $scope.chat_logs.push({"message": $scope.message,'user':'admin','ali':'left'})
         $scope.message ="";
         $scope.gotoBottom();
       }
 
       socket.on('new_chat_log', function (data) {
-        $scope.chat_logs.push({"message": data.message})
+        if(data[i].user == 'client')
+          data[i].ali = 'right'
+        else
+          data[i].ali = 'left'
+        $scope.chat_logs.push(data)
         $scope.gotoBottom();
       });
 
       socket.on('chat_logs', function (data) {
         $scope.chat_logs = data;
         $scope.chat_logs.reverse();
+        for(var i in data)
+        {
+          if(data[i].user == 'client')
+            data[i].ali = 'right'
+          else
+            data[i].ali = 'left'
+        }
+
       });
 
   }]
