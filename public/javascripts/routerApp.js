@@ -21,14 +21,14 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate'])
         $scope.msg ="";
       }
 
-          socket.on('new_chat_log', function (data) {
-            $scope.logs.push({"message": $scope.message})
-          });
+      socket.on('new_chat_log', function (data) {
+        $scope.logs.push({"message": data.message})
+      });
 
-          socket.on('chat_logs', function (data) {
-            $scope.chat_logs = data;
-            $scope.chat_logs.reverse();
-          });
+      socket.on('chat_logs', function (data) {
+        $scope.chat_logs = data;
+        $scope.chat_logs.reverse();
+      });
 
   }]
 )
