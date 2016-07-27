@@ -44,9 +44,8 @@ function findWord(word,callback){
       docs.mean = wow;
     }
     }
-    callback();
   })
-    callback(docs)
+    return callback(docs)
 }
 
 exports.findWord = findWord;
