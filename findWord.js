@@ -8,7 +8,7 @@ function findWord(word,callback){
 
   request(url+word, function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    console.log(body) // Show the HTML for the Google homepage.
+    //console.log(body) // Show the HTML for the Google homepage.
     var temp = body.split('<ul class=\"list_search\">')
 
     var flg = 1;
@@ -19,10 +19,10 @@ function findWord(word,callback){
       var temp2 = temp[1].split('</ul>')
       while(j < temp2[0].length)
       {
-              if (temp2[0].indexof(j) == '<'){
+              if (temp2[0].chatAt(j) == '<'){
                   flg = 0;
               }
-              else if( temp2[0].indexif(j) == '>'){
+              else if( temp2[0].chatAt(j) == '>'){
                 flg = 1;
                 i = i+1;
                 continue
@@ -33,7 +33,7 @@ function findWord(word,callback){
                   continue
               }
               else if( flg == 1 && temp2[i] != '\t' && temp2[i] != '\n'){
-                  wow = wow + temp2[0].indexif(j);
+                  wow = wow + temp2[0].chatAt(j);
               }
 
               j = j + 1;
