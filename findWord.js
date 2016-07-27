@@ -1,15 +1,5 @@
 var request = require('request')
 
-
-
-
-
-
-
-request(options, callback);
-
-
-
 function findWord(word,callback){
 
     var docs = {};
