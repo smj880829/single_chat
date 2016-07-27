@@ -69,6 +69,10 @@ app.controller('appWord',['$scope','socket', function($scope,socket) {
     socket.emit('send_sentence',$scope.sentence)
   }
 
+  socket.on('word_result',function(data){
+    $scope.result = data;
+  })
+
 }])
 
 app.factory('socket', function ($rootScope) {

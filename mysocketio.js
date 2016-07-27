@@ -1,6 +1,7 @@
 var io =  require('socket.io')();
 var db = require('./MongoConnector/DAO')
 var conf = require('./MongoConnector/Conf')
+var fw = require('./findWord')
 
 module.exports = function(options) {
   io.attach(options,{origins:conf.ip +':* http://' + conf.ip +':*'});
@@ -50,5 +51,13 @@ io.on('connection', function (socket) {
       console.log(data);
       data.replace(',',' ')
       data.replace('.',' ')
+      var words = data.split(' ')
+      var result = {};
+      for(var i in words)
+      {
+        result.push(fw.findWord(words[i]);
+      }
+
+      socket.emit('word_result', result);
   });
 })
