@@ -89,11 +89,12 @@ body {
 */
 
 .temp {
-  width : 0%;
+  width : 10%;
   position:fixed;
   height: 100%;
   right : 0px;
   background-color: gray;
+  transition: all linear 0.5s;
 }
 
 .temp.ng-hide{
