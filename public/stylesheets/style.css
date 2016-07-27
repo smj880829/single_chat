@@ -85,6 +85,17 @@ body {
 }
 
 /*
+  slied
+*/
+
+.temp {
+  width : 50%;
+  position:fixed;
+  height: 100%;
+  right : 0px
+}
+
+/*
  * chat
  */
 .chat{
