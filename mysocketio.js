@@ -55,11 +55,11 @@ io.on('connection', function (socket) {
       for(var i in words)
       {
             var docs = {};
-            docs.word = word[i];
+            docs.word = words[i];
 
             var url = 'http://dic.daum.net/search.do?q='
 
-          request(url+word, function (error, response, body) {
+          request(url+words[i], function (error, response, body) {
           if (!error && response.statusCode == 200) {
             //console.log(body) // Show the HTML for the Google homepage.
             var temp = body.split('<ul class=\"list_search\">')
