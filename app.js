@@ -68,8 +68,8 @@ app.use(function(err, req, res, next) {
 http.listen(80);
 
 const options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
+  key: fs.readFileSync('./device.key'),
+  cert: fs.readFileSync('./device.crt')
 };
 
 var https = require('https').Server(options,app);
