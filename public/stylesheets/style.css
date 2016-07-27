@@ -92,7 +92,8 @@ body {
   width : 50%;
   position:fixed;
   height: 100%;
-  right : 0px
+  right : 0px;
+  background-color: gray;
 }
 
 /*
