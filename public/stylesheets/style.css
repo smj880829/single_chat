@@ -89,7 +89,7 @@ body {
 */
 
 .temp {
-  width : 10%;
+  width : 50%;
   position:fixed;
   height: 100%;
   right : 0px;
@@ -97,8 +97,8 @@ body {
   transition: all linear 0.5s;
 }
 
-.temp.ng-show{
-  width : 50%;
+.temp.ng-hide{
+  width : 0%;
 }
 
 
