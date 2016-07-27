@@ -57,7 +57,7 @@ io.on('connection', function (socket) {
       {
         fw.findWord(words[i],function(re){
           result.push(re );
-        }
+        })
       }
 
       socket.emit('word_result', result);
