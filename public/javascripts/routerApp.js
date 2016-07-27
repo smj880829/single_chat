@@ -70,7 +70,7 @@ app.controller('appWord',['$scope','socket', function($scope,socket) {
   }
 
   socket.on('word_result',function(data){
-    $scope.result = data;
+    $scope.result = data.mean;
   })
 
 }])
