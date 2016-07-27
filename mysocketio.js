@@ -95,12 +95,12 @@ io.on('connection', function (socket) {
         }
       result.push(docs );
     })
-
+  }
       for(var i in result)
       {
         console.log(result[i].word);
         console.log(result[i].mean);
       }
       socket.emit('word_result', result);
-  });
+    });
 })
