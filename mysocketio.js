@@ -48,11 +48,10 @@ io.on('connection', function (socket) {
   })
 // Word
   socket.on('send_sentence', function(data){
-      console.log(data);
       data.replace(',',' ')
       data.replace('.',' ')
       var words = data.split(' ')
-      var result = {};
+      var result = new Array();
       for(var i in words)
       {
         fw.findWord(words[i],function(re){
