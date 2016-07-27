@@ -62,14 +62,14 @@ app.controller('cniCtl',['$scope','socket', function($scope,socket) {
   $scope.addelement = function(el){
     $scope.names.push(el)
   }
-})
+}])
 
 app.controller('appWord',['$scope','socket', function($scope,socket) {
   $scope.send_sentence = function() {
     socket.emit('send_sentence',$scope.sentence)
   }
 
-})
+}])
 
 app.factory('socket', function ($rootScope) {
   var socket = io.connect('https://54.199.240.31');
