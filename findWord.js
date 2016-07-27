@@ -17,12 +17,13 @@ function findWord(word,callback){
 
     if(temp.length > 1){
       var temp2 = temp[1].split('</ul>')
+      console.log(temp2[0]);
       while(j < temp2[0].length)
       {
-              if (temp2[0].chatAt(j) == '<'){
+              if (temp2[0].charAt(j) == '<'){
                   flg = 0;
               }
-              else if( temp2[0].chatAt(j) == '>'){
+              else if( temp2[0].charAt(j) == '>'){
                 flg = 1;
                 i = i+1;
                 continue
@@ -33,7 +34,7 @@ function findWord(word,callback){
                   continue
               }
               else if( flg == 1 && temp2[i] != '\t' && temp2[i] != '\n'){
-                  wow = wow + temp2[0].chatAt(j);
+                  wow = wow + temp2[0].charAt(j);
               }
 
               j = j + 1;
