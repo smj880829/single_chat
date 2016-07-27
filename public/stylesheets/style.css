@@ -94,7 +94,7 @@ body {
   height: 100%;
   right : 0px;
   background-color: gray;
-  transition: all linear 0.5s;
+  transition:all 2s cubic-bezier(0,1.59,1,-0.75);  
 }
 
 .temp.ng-hide{
