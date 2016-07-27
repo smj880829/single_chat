@@ -89,7 +89,7 @@ body {
 */
 
 .temp {
-  width : 0px;
+  width : 10%;
   position:fixed;
   height: 100%;
   right : 0px;
