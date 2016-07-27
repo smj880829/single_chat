@@ -18,6 +18,10 @@ router.get('/ani', function(req, res, next) {
   res.render('ani');
 });
 
+router.get('/word', function(req, res, next) {
+  res.render('word');
+});
+
 router.get('/error', function(req, res, next) {
   res.render('error');
 });

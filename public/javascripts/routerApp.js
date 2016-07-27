@@ -6,6 +6,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
     .when('/main', {templateUrl: '/main'})
     .when('/chat', {templateUrl: '/chat'})
     .when('/ani', {templateUrl: '/ani'})
+    .when('/word', {templateUrl: '/word'})
 //라우트 설정객체에 controller 속성을 통하여 해당 화면에 연결되는 컨트롤러 이름을 설정할 수 있다.
     .otherwise({redirectTo: '/'});
 //otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.
@@ -20,6 +21,8 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
         $location.hash('chat_bottom');
         $anchorScroll();
       }
+
+
 
     $scope.insertmsg_angular = function(){
         socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
@@ -53,7 +56,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
 
   }]
 )
-app.controller('aniCtl', function($scope) {
+app.controller('aniCtl','socket', function($scope,socket) {
   $scope.names = ["a","b","c","d"]
 
   $scope.addelement = function(el){
@@ -61,6 +64,12 @@ app.controller('aniCtl', function($scope) {
   }
 })
 
+app.controller('appWord','socket', function($scope,socket) {
+  $scope.send_sentence = function() {
+    socket.emit('send_sentence',$scope.sentence)
+  }
+
+})
 
 app.factory('socket', function ($rootScope) {
   var socket = io.connect('https://54.199.240.31');

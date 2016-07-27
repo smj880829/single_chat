@@ -45,4 +45,10 @@ io.on('connection', function (socket) {
       socket.emit('chat_logs', re);
     })
   })
+// Word
+  socket.on('send_sentence', function(data){
+      console.log(data);
+      data.replace(',',' ')
+      data.replace('.',' ')
+  });
 })
