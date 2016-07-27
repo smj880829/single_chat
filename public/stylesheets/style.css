@@ -97,27 +97,7 @@ body {
 }
 
 .temp.ng-hide{
-  animation: 0.5s hidediv;
-}
-
-.temp.ng-show{
-  animation: 0.5s showdiv;
-}
-
-@keyframes showdiv {
-  from {
-      width: : 0%;
-  } to {
-      width: : 50%;
-  }
-}
-
-@keyframes hidediv {
-  from {
-      width: : 50%;
-  } to {
-      width: : 0%;
-  }
+  width : 50%;
 }
 
 
