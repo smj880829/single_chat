@@ -44,3 +44,5 @@ function findWord(word,callback){
   })
     callback(docs)
 }
+
+exports.findWord = findWord;
