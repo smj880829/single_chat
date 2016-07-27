@@ -59,6 +59,11 @@ io.on('connection', function (socket) {
         })
       }
 
+      for(var i in result)
+      {
+        console.log(result[i].word);
+        console.log(result[i].mean);
+      }
       socket.emit('word_result', result);
   });
 })
