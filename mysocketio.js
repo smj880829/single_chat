@@ -67,7 +67,7 @@ io.on('connection', function (socket) {
             var flg = 1;
             var j = 0;
             var wow = "";
-
+            console.log(temp[0])
             if(temp.length > 1){
                           var temp2 = temp[1].split('</ul>')
 
