@@ -17,7 +17,7 @@ function findWord(word,callback){
 
     if(temp.length > 1){
       var temp2 = temp[1].split('</ul>')
-      console.log(temp2[0]);
+
       while(j < temp2[0].length)
       {
               if (temp2[0].charAt(j) == '<'){
@@ -39,6 +39,7 @@ function findWord(word,callback){
 
               j = j + 1;
       }
+      console.log(wow);
       docs.mean = wow;
     }
     }
