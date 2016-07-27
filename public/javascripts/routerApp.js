@@ -56,7 +56,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
 
   }]
 )
-app.controller('aniCtl','socket', function($scope,socket) {
+app.controller('cniCtl',['$scope','socket', function($scope,socket) {
   $scope.names = ["a","b","c","d"]
 
   $scope.addelement = function(el){
@@ -64,7 +64,7 @@ app.controller('aniCtl','socket', function($scope,socket) {
   }
 })
 
-app.controller('appWord','socket', function($scope,socket) {
+app.controller('appWord',['$scope','socket', function($scope,socket) {
   $scope.send_sentence = function() {
     socket.emit('send_sentence',$scope.sentence)
   }
