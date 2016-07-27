@@ -1,6 +1,17 @@
 var request = require('request')
 
+
+
+
+
+
+
+request(options, callback);
+
+
+
 function findWord(word,callback){
+
     var docs = {};
     docs.word = word;
 
@@ -43,6 +54,7 @@ function findWord(word,callback){
       docs.mean = wow;
     }
     }
+    callback();
   })
     callback(docs)
 }
