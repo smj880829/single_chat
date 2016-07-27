@@ -25,15 +25,15 @@ function findWord(word,callback){
               }
               else if( temp2[0].charAt(j) == '>'){
                 flg = 1;
-                i = i+1;
+                j = j+1;
                 continue
               }
 
               if(flg == 0){
-                  i = i + 1;
+                  j = j + 1;
                   continue
               }
-              else if( flg == 1 && temp2[i] != '\t' && temp2[i] != '\n'){
+              else if( flg == 1 && temp2[0].charAt(j) != '\t' && temp2[0].charAt(j) != '\n'){
                   wow = wow + temp2[0].charAt(j);
               }
 
