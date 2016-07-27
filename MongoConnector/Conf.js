@@ -1,4 +1,4 @@
-var ip = "ec2-54-199-240-31.ap-northeast-1.compute.amazonaws.com"
+var ip = "54.199.240.31"
 var port = 27017
 var db = "single_chat"
 var col = "chat_log"

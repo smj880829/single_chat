@@ -63,7 +63,7 @@ app.controller('aniCtl', function($scope) {
 
 
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect('http://ec2-54-199-240-31.ap-northeast-1.compute.amazonaws.com');
+  var socket = io.connect('http://54.199.240.31');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
