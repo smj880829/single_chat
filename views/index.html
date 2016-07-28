@@ -20,9 +20,11 @@
 
   </head>
 
-  <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-         <div class="container-fluid">
+  <body >
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-show="nav_show" >
+         <div class="container-fluid " ng-controller='navCtl' >
            <div class="navbar-header">
              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                <span class="sr-only">Toggle navigation</span>
@@ -34,10 +36,10 @@
            </div>
            <div id="navbar" class="navbar-collapse collapse">
              <ul class="nav navbar-nav navbar-right">
-               <li><a href="#chat">Dashboard</a></li>
-               <li><a href="#word">Settings</a></li>
-               <li><a href="#">Profile</a></li>
-               <li><a href="#">Help</a></li>
+               <li><a href="#chat" >Dashboard</a></li>
+               <li><a href="#word" >Settings</a></li>
+               <li><a href="#" >Profile</a></li>
+               <li><a  ng-click="chatgotoBottom()">Help</a></li>
              </ul>
              <form class="navbar-form navbar-right">
                <input type="text" class="form-control" placeholder="Search...">
@@ -46,15 +48,26 @@
          </div>
        </nav>
 
-       <div class="container-fluid">
-         <div class="row">
-
-           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <ng-view>
-            </ng-view>
+       <div ng-show="chat_show" class="right-slide">
+         <div class='chat' ng-controller='chatCtl'>
+           <div ng-scrollable="{scrollX:'none'}" class="chat_mid">
+             <div class="ani-repeat" ng-repeat='log in chat_logs' align='{{log.ali}}'>
+               <div class="log"  >
+                 {{log.message}}
+               </div>
+             </div>
+             <div id="chat_bottom">
+             </div>
+           </div>
+           <div class="chat_bot">
+                <input type="text" class="form-control" ng-model="message" my-Enter="insertmsg_angular()">
            </div>
          </div>
        </div>
+
+      <ng-view>
+      </ng-view>
+
 
 
   </body>
