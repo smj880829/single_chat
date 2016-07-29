@@ -67,7 +67,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
       }
 
       socket.on('new_chat_log', function (data) {
-        if($rootScope.bool){
+        if($rootScope.chat_show){
             if(data.user == 'client')
               data.ali = 'right'
             else

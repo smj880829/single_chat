@@ -1,0 +1,20 @@
+<div class='chat' ng-controller='chatCtl'>
+  <div ng-scrollable="{scrollX:'none'}" class="chat_mid">
+    <div class="ani-repeat" ng-repeat='log in chat_logs' align='{{log.ali}}'>
+      <div class="log"  >
+        {{log.message}}
+      </div>
+    </div>
+    <div id="chat_bottom">
+    </div>
+  </div>
+
+  <div class="chat_bot">
+      <div class='col-md-11 chat_op'>
+        <input type="text" class="form-control" ng-model="message" my-Enter="insertmsg_angular()">
+      </div>
+      <div class='col-md-1 chat_op' >
+        <button type="button" class="btn btn-primary center-block" ng-click='insertmsg_angular()' >채팅 보내기</button>
+      </div>
+  </div>
+</div>

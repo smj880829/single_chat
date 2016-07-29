@@ -20,7 +20,7 @@ var mysocket = require('./mysocketio')(http);
 // view engine setup
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,9 +30,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'smj',
-                            resave: false,
+                            resave: true,
                             saveUninitialized: true
-                            ,cookie: { secure: true}}));
+                            ,cookie: { maxAge: null}}));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -80,17 +80,6 @@ const options = {
 var https = require('https').Server(options,app);
 var httpsmysocket = require('./mysocketio')(https);
 https.listen(443)
-
-/*
-app.listen(80,function(){
-  console.log('server running...');
-});
-http.createServer(app).listen(80, function(){
-    console.log('server running...');
-});
-*/
-
-
 
 
 

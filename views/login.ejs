@@ -13,7 +13,7 @@
   $(document).ready(function() {
     $("#login-button").click(function(event){
    		 event.preventDefault();
-
+     $("#title").html("Login.....");
    	 $('form').fadeOut(500);
    	 $('.wrapper').addClass('form-success');
 
@@ -25,9 +25,9 @@
 
   <div class="wrapper">
 	<div class="container">
-		<h1>Welcome</h1>
+		<h1 id='title'><%= title %></h1>
 
-		<form class="form" action='/login' method="post">
+		<form class="form">
 			<input type="text" placeholder="Username" name="email">
 			<input type="password" placeholder="Password" name="password">
 			<button type="submit" id="login-button">Login</button>
