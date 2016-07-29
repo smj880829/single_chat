@@ -24,13 +24,14 @@ router.get('/main',auth, function(req, res, next) {
           res.render('main');
 });
 
+router.get('/profile',auth, function(req, res, next) {
+          res.render('profile');
+});
+
 router.get('/chat', function(req, res, next) {
   res.render('chat');
 });
 
-router.get('/ani', function(req, res, next) {
-  res.render('ani');
-});
 
 router.get('/logout', function(req, res, next) {
   req.session.destroy(function(err) {

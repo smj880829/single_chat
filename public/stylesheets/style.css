@@ -25,6 +25,27 @@ body {
   border: 0;
 }
 
+/*
+ * content black
+ */
+
+.black {
+  width: 100%;
+  padding-top : 50px;
+  padding-bottom:  50px;
+  padding-left: 500px;
+  padding-right: 500px;
+
+  text-align: center;
+}
+
+.black_title{
+  font-size: 50px;
+}
+
+.black_contents{
+  font-size: 20px;
+}
 
 
 /*
