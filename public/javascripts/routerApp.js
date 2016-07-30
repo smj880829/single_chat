@@ -96,7 +96,7 @@ var app = angular.module('myApp', ['ngRoute','ngAnimate','ngScrollable'])
 //54.199.240.31
 
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect('http://localhost/');
+  var socket = io.connect('http://54.199.240.31/');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
